@@ -14,7 +14,7 @@ extern crate derive_builder;
 #[macro_use]
 extern crate derivative;
 
-mod addr_info_hints;
+pub mod addr_info_hints;
 pub mod background;
 pub mod system;
 
