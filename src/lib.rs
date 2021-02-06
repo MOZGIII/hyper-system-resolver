@@ -6,6 +6,7 @@
 //! ## Usage
 //!
 //!    ```
+//!    # #[cfg(feature = "addr_info_hints")] {
 //!    use hyper_system_resolver::{addr_info_hints, AddrInfoHints};
 //!
 //!    let addr_info_hints = AddrInfoHints {
@@ -17,6 +18,7 @@
 //!    };
 //!    let http_connector = hyper::client::HttpConnector::new_with_resolver(system_resolve.resolver());
 //!    let client = hyper::client::Client::builder().build::<_, hyper::Body>(http_connector);
+//!    # }
 //!    ```
 
 #![warn(missing_docs, clippy::all)]
