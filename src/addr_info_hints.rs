@@ -3,6 +3,8 @@
 //! This is only required if you prefer a portable itnerface.
 //! You can use a raw [`dns_lookup::AddrInfoHints`] instead.
 
+#![cfg(feature = "addr_info_hints")]
+
 use dns_lookup::AddrFamily;
 
 #[cfg(unix)]

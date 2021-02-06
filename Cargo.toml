@@ -18,11 +18,15 @@ derive_builder = "0.9"
 derivative = "2"
 
 [target."cfg(windows)".dependencies]
-winapi = { version = "^0.3", default-features = false, features = ["ws2def"] }
+winapi = { version = "^0.3", default-features = false, features = ["ws2def"], optional = true }
 
 [target."cfg(unix)".dependencies]
-libc = "^0.2"
+libc = { version = "^0.2", optional = true }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["macros"] }
 hyper = { version = "0.14", features = ["http1"] }
+
+[features]
+default = ["addr_info_hints"]
+addr_info_hints = ["libc", "winapi"]

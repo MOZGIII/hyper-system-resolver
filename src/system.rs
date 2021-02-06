@@ -76,16 +76,15 @@ mod tests {
 
     use tower_service::Service;
 
-    use crate::addr_info_hints::AddressFamily;
-
     use super::*;
 
     #[tokio::test]
     async fn test_resolve_ipv4() {
         let mut resolver = background::Resolver::new(System {
             addr_info_hints: Some(
-                crate::AddrInfoHints {
-                    address_family: AddressFamily::Inet,
+                AddrInfoHints {
+                    address: dns_lookup::AddrFamily::Inet.into(),
+                    ..Default::default()
                 }
                 .into(),
             ),
@@ -109,12 +108,10 @@ mod tests {
     #[tokio::test]
     async fn test_resolve_ipv6() {
         let mut resolver = background::Resolver::new(System {
-            addr_info_hints: Some(
-                crate::AddrInfoHints {
-                    address_family: AddressFamily::Inet6,
-                }
-                .into(),
-            ),
+            addr_info_hints: Some(AddrInfoHints {
+                address: dns_lookup::AddrFamily::Inet6.into(),
+                ..Default::default()
+            }),
             service: None,
         });
 
