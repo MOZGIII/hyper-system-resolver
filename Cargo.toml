@@ -1,0 +1,27 @@
+[package]
+name = "hyper-system-resolver"
+version = "0.1.0"
+description = "An advanced system resolver for use with hyper."
+authors = ["MOZGIII <mike-n@narod.ru>"]
+edition = "2018"
+license = "MIT"
+repository = "https://github.com/MOZGIII/hyper-system-resolver"
+keywords = ["hyper", "dns", "resolver", "getaddrinfo"]
+
+[dependencies]
+hyper = { version = "0.14", features = ["client", "tcp"] }
+tower-service = "0.3"
+tokio = "1"
+tracing = "0.1"
+dns-lookup = "1"
+derive_builder = "0.9"
+derivative = "2"
+
+[target."cfg(windows)".dependencies]
+winapi = { version = "^0.3", default-features = false, features = ["ws2def"] }
+
+[target."cfg(unix)".dependencies]
+libc = "^0.2"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros"] }
