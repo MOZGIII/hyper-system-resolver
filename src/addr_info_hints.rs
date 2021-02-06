@@ -37,7 +37,7 @@ pub struct AddrInfoHints {
 
 impl AddrInfoHints {
     /// Create a new [`AddrInfoHints`] builder.
-    pub fn new() -> AddrInfoHintsBuilder {
+    pub fn builder() -> AddrInfoHintsBuilder {
         AddrInfoHintsBuilder::default()
     }
 }
