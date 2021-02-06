@@ -1,3 +1,8 @@
+//! [`AddrInfoHints`] and associated types.
+//!
+//! This is only required if you prefer a portable itnerface.
+//! You can use a raw [`dns_lookup::AddrInfoHints`] instead.
+
 use dns_lookup::AddrFamily;
 
 #[cfg(unix)]
@@ -6,14 +11,20 @@ use libc::{AF_INET, AF_INET6, AF_UNIX, AF_UNSPEC};
 #[cfg(windows)]
 use winapi::shared::ws2def::{AF_INET, AF_INET6, AF_UNIX, AF_UNSPEC};
 
+/// The address family to request when resolving the name.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Derivative)]
 #[derivative(Default)]
 pub enum AddressFamily {
+    /// No preference.
     #[derivative(Default)]
     Unspec,
+    /// Request UNIX-family address.
     Unix,
+    /// Request IPv4-family address.
     Inet,
+    /// Request IPv6-family address.
     Inet6,
+    /// Request custom address family.
     Custom(i32),
 }
 
