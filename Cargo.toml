@@ -25,3 +25,4 @@ libc = "^0.2"
 
 [dev-dependencies]
 tokio = { version = "1", features = ["macros"] }
+hyper = { version = "0.14", features = ["http1"] }
