@@ -86,7 +86,11 @@ mod tests {
             .collect();
 
         let localhost = SocketAddr::V4(SocketAddrV4::new(Ipv4Addr::new(127, 0, 0, 1), 0));
-        assert_eq!(addrs, vec![localhost, localhost]);
+
+        assert!(addrs.len() > 0);
+        for addr in addrs {
+            assert_eq!(addr, localhost);
+        }
     }
 
     #[tokio::test]
@@ -113,6 +117,10 @@ mod tests {
             0,
             0,
         ));
-        assert_eq!(addrs, vec![localhost, localhost]);
+
+        assert!(addrs.len() > 0);
+        for addr in addrs {
+            assert_eq!(addr, localhost);
+        }
     }
 }
