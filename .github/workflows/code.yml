@@ -13,7 +13,7 @@ defaults:
 jobs:
 
   test:
-    name: ${{ matrix.platform.name }} / ${{ matrix.mode.name }}
+    name: ${{ matrix.platform.name }} / ${{ matrix.mode.name }} / ${{ matrix.featureset.name }}
     runs-on: ${{ matrix.platform.os }}
     strategy:
       matrix:
@@ -36,6 +36,12 @@ jobs:
           - name: build
             cargo-command: build
             cargo-args: --verbose
+
+        featureset:
+          - name: default features
+            args: "" # trivial
+          - name: no default features
+            args: "--no-default-features"
 
       fail-fast: false
     steps:
@@ -65,4 +71,4 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: ${{ matrix.mode.cargo-command }}
-          args: ${{ matrix.mode.cargo-args }}
+          args: ${{matrix.featureset.args}} ${{ matrix.mode.cargo-args }}
