@@ -1,9 +1,7 @@
 //! [`AddrInfoHints`] and associated types.
 //!
-//! This is only required if you prefer a portable itnerface.
+//! This is only required if you prefer a portable interface.
 //! You can use a raw [`dns_lookup::AddrInfoHints`] instead.
-
-#![cfg(feature = "addr_info_hints")]
 
 use dns_lookup::AddrFamily;
 
@@ -14,11 +12,9 @@ use libc::{AF_INET, AF_INET6, AF_UNIX, AF_UNSPEC};
 use winapi::shared::ws2def::{AF_INET, AF_INET6, AF_UNIX, AF_UNSPEC};
 
 /// The address family to request when resolving the name.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Derivative)]
-#[derivative(Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AddressFamily {
     /// No preference.
-    #[derivative(Default)]
     Unspec,
     /// Request UNIX-family address.
     Unix,
@@ -28,6 +24,12 @@ pub enum AddressFamily {
     Inet6,
     /// Request custom address family.
     Custom(i32),
+}
+
+impl Default for AddressFamily {
+    fn default() -> Self {
+        Self::Unspec
+    }
 }
 
 impl From<AddrFamily> for AddressFamily {
@@ -40,19 +42,11 @@ impl From<AddrFamily> for AddressFamily {
     }
 }
 
-/// Portable [`AddrInfoHints`] builder.
-#[derive(Debug, Builder, Default)]
+/// Portable [`AddrInfoHints`].
+#[derive(Debug, Default)]
 pub struct AddrInfoHints {
-    #[builder(default)]
     /// Address family to request.
     pub address_family: AddressFamily,
-}
-
-impl AddrInfoHints {
-    /// Create a new [`AddrInfoHints`] builder.
-    pub fn builder() -> AddrInfoHintsBuilder {
-        AddrInfoHintsBuilder::default()
-    }
 }
 
 impl From<&AddrInfoHints> for dns_lookup::AddrInfoHints {

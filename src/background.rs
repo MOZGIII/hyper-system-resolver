@@ -16,9 +16,8 @@ use std::{
     task::{self, Poll},
 };
 
-use hyper::client::connect::dns::Name;
+use hyper::{client::connect::dns::Name, service::Service};
 use tokio::task::JoinHandle;
-use tower_service::Service;
 
 /// Resolve the name in the background.
 pub trait Resolve {
@@ -42,7 +41,7 @@ impl<T> Resolver<T> {
         Self { inner }
     }
 
-    /// Consume [`Resolver`] and return the wrapped [`T`].
+    /// Consume [`Resolver`] and return the wrapped `T`.
     pub fn into_inner(self) -> T {
         self.inner
     }

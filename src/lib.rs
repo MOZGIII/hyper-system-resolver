@@ -26,16 +26,11 @@
 #[macro_use]
 extern crate tracing;
 
-#[macro_use]
-extern crate derive_builder;
-
-#[cfg(feature = "addr_info_hints")]
-#[macro_use]
-extern crate derivative;
-
+#[cfg(feature = "addr-info-hints")]
+#[cfg_attr(docsrs, doc(cfg(feature = "addr-info-hints")))]
 pub mod addr_info_hints;
 pub mod background;
 pub mod system;
 
-#[cfg(feature = "addr_info_hints")]
-pub use addr_info_hints::AddrInfoHints;
+#[cfg(feature = "addr-info-hints")]
+pub use self::addr_info_hints::AddrInfoHints;
