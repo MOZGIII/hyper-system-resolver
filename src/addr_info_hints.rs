@@ -14,11 +14,9 @@ use libc::{AF_INET, AF_INET6, AF_UNIX, AF_UNSPEC};
 use winapi::shared::ws2def::{AF_INET, AF_INET6, AF_UNIX, AF_UNSPEC};
 
 /// The address family to request when resolving the name.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Derivative)]
-#[derivative(Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AddressFamily {
     /// No preference.
-    #[derivative(Default)]
     Unspec,
     /// Request UNIX-family address.
     Unix,
@@ -28,6 +26,12 @@ pub enum AddressFamily {
     Inet6,
     /// Request custom address family.
     Custom(i32),
+}
+
+impl Default for AddressFamily {
+    fn default() -> Self {
+        Self::Unspec
+    }
 }
 
 impl From<AddrFamily> for AddressFamily {

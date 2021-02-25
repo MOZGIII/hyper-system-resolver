@@ -15,7 +15,6 @@ tokio = "1"
 tracing = "0.1"
 dns-lookup = "1"
 derive_builder = "0.9"
-derivative = "2"
 
 [target."cfg(windows)".dependencies]
 winapi = { version = "^0.3", default-features = false, features = ["ws2def"], optional = true }
