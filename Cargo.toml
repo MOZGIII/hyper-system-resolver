@@ -27,5 +27,5 @@ tokio = { version = "1", features = ["macros"] }
 hyper = { version = "0.14", features = ["http1"] }
 
 [features]
-default = ["addr_info_hints"]
-addr_info_hints = ["libc", "winapi"]
+default = ["addr-info-hints"]
+addr-info-hints = ["libc", "winapi"]

@@ -6,7 +6,7 @@
 //! ## Usage
 //!
 //!    ```
-//!    # #[cfg(feature = "addr_info_hints")] {
+//!    # #[cfg(feature = "addr-info-hints")] {
 //!    use hyper_system_resolver::{addr_info_hints, AddrInfoHints};
 //!
 //!    let addr_info_hints = AddrInfoHints {
@@ -33,5 +33,5 @@ pub mod addr_info_hints;
 pub mod background;
 pub mod system;
 
-#[cfg(feature = "addr_info_hints")]
+#[cfg(feature = "addr-info-hints")]
 pub use addr_info_hints::AddrInfoHints;
