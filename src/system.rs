@@ -86,7 +86,6 @@ mod tests {
                     address: dns_lookup::AddrFamily::Inet.into(),
                     ..Default::default()
                 }
-                .into(),
             ),
             service: None,
         });
@@ -99,7 +98,7 @@ mod tests {
 
         let localhost = SocketAddr::V4(SocketAddrV4::new(Ipv4Addr::new(127, 0, 0, 1), 0));
 
-        assert!(addrs.len() > 0);
+        assert!(!addrs.is_empty());
         for addr in addrs {
             assert_eq!(addr, localhost);
         }
@@ -128,7 +127,7 @@ mod tests {
             0,
         ));
 
-        assert!(addrs.len() > 0);
+        assert!(!addrs.is_empty());
         for addr in addrs {
             assert_eq!(addr, localhost);
         }
