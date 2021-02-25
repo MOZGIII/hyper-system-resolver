@@ -1,6 +1,6 @@
 //! [`AddrInfoHints`] and associated types.
 //!
-//! This is only required if you prefer a portable itnerface.
+//! This is only required if you prefer a portable interface.
 //! You can use a raw [`dns_lookup::AddrInfoHints`] instead.
 
 #![cfg(feature = "addr_info_hints")]
@@ -40,7 +40,7 @@ impl From<AddrFamily> for AddressFamily {
     }
 }
 
-/// Portable [`AddrInfoHints`] builder.
+/// Portable [`AddrInfoHints`].
 #[derive(Debug, Builder, Default)]
 pub struct AddrInfoHints {
     #[builder(default)]
