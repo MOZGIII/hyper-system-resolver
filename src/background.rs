@@ -42,7 +42,7 @@ impl<T> Resolver<T> {
         Self { inner }
     }
 
-    /// Consume [`Resolver`] and return the wrapped [`T`].
+    /// Consume [`Resolver`] and return the wrapped `T`.
     pub fn into_inner(self) -> T {
         self.inner
     }
