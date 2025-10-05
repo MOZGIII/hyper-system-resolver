@@ -8,6 +8,7 @@
 //!    ```
 //!    # #[cfg(feature = "addr-info-hints")] {
 //!    use hyper_system_resolver::{addr_info_hints, AddrInfoHints};
+//!    use hyper_util::client::legacy::{Client, connect::HttpConnector};
 //!
 //!    let addr_info_hints = AddrInfoHints {
 //!         address_family: addr_info_hints::AddressFamily::Inet6,
@@ -16,8 +17,9 @@
 //!        addr_info_hints: Some(addr_info_hints.into()),
 //!        service: None,
 //!    };
-//!    let http_connector = hyper::client::HttpConnector::new_with_resolver(system_resolve.resolver());
-//!    let client = hyper::client::Client::builder().build::<_, hyper::Body>(http_connector);
+//!    let executor = hyper_util::rt::TokioExecutor::new();
+//!    let http_connector = HttpConnector::new_with_resolver(system_resolve.resolver());
+//!    let client = Client::builder(executor).build::<_, hyper::body::Incoming>(http_connector);
 //!    # }
 //!    ```
 

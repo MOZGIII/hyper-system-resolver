@@ -3,7 +3,7 @@
 use std::{io, net::SocketAddr, vec};
 
 use dns_lookup::AddrInfoHints;
-use hyper::client::connect::dns::Name;
+use hyper_util::client::legacy::connect::dns::Name;
 use tokio::task::JoinHandle;
 
 use crate::background;
@@ -84,8 +84,8 @@ mod tests {
     async fn test_resolve_ipv4() {
         let mut resolver = background::Resolver::new(System {
             addr_info_hints: Some(AddrInfoHints {
-                    address: dns_lookup::AddrFamily::Inet.into(),
-                    ..Default::default()
+                address: dns_lookup::AddrFamily::Inet.into(),
+                ..Default::default()
             }),
             service: None,
         });

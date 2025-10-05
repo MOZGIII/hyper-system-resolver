@@ -16,7 +16,7 @@ use std::{
     task::{self, Poll},
 };
 
-use hyper::client::connect::dns::Name;
+use hyper_util::client::legacy::connect::dns::Name;
 use tokio::task::JoinHandle;
 use tower_service::Service;
 

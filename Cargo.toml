@@ -9,9 +9,10 @@ repository = "https://github.com/MOZGIII/hyper-system-resolver"
 keywords = ["hyper", "dns", "resolver", "getaddrinfo"]
 
 [dependencies]
-hyper = { version = "0.14", features = ["client", "tcp"] }
+hyper = { version = "1", features = ["client"] }
+hyper-util = { version = "0.1", features = ["client-legacy"] }
 tower-service = "0.3"
-tokio = "1"
+tokio = { version = "1", features = ["rt"] }
 tracing = "0.1"
 dns-lookup = "1"
 derive_builder = "0.20"
@@ -24,7 +25,7 @@ libc = { version = "^0.2", optional = true }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["macros"] }
-hyper = { version = "0.14", features = ["http1"] }
+hyper-util = { version = "0.1", features = ["http1"] }
 
 [features]
 default = ["addr-info-hints"]
