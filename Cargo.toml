@@ -14,7 +14,7 @@ hyper-util = { version = "0.1", features = ["client-legacy"] }
 tower-service = "0.3"
 tokio = { version = "1", features = ["rt"] }
 tracing = "0.1"
-dns-lookup = "1"
+dns-lookup = "3"
 derive_builder = "0.20"
 
 [target."cfg(windows)".dependencies]
