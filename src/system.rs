@@ -43,7 +43,8 @@ impl background::Resolve for System {
         tokio::task::spawn_blocking(move || {
             debug!("resolving host={:?} service={:?}", name, service);
 
-            let iter = dns_lookup::getaddrinfo(Some(name.as_str()), service.as_deref(), addr_info_hints)?;
+            let iter =
+                dns_lookup::getaddrinfo(Some(name.as_str()), service.as_deref(), addr_info_hints)?;
             let list = iter
                 .map(|result| result.map(|addr_info| addr_info.sockaddr))
                 .collect::<Result<Vec<_>, _>>()?;
@@ -82,12 +83,10 @@ mod tests {
     #[tokio::test]
     async fn test_resolve_ipv4() {
         let mut resolver = background::Resolver::new(System {
-            addr_info_hints: Some(
-                AddrInfoHints {
+            addr_info_hints: Some(AddrInfoHints {
                     address: dns_lookup::AddrFamily::Inet.into(),
                     ..Default::default()
-                }
-            ),
+            }),
             service: None,
         });
 
