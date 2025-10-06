@@ -53,11 +53,11 @@ impl background::Resolve for System {
     }
 }
 
-/// System resolver compatible with [`hyper`].
+/// System resolver compatible with [`hyper_util`].
 pub type Resolver = background::Resolver<System>;
 
 impl System {
-    /// Use this [`System`] to create a new [`hyper`]-compatible [`Resolver`].
+    /// Use this [`System`] to create a new [`hyper_util`]-compatible [`Resolver`].
     pub fn resolver(self) -> Resolver {
         Resolver::new(self)
     }

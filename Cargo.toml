@@ -1,15 +1,14 @@
 [package]
 name = "hyper-system-resolver"
 version = "0.6.0"
-description = "An advanced system resolver for use with hyper."
+description = "An advanced system resolver for use with hyper & hyper-util."
 authors = ["MOZGIII <mike-n@narod.ru>"]
 edition = "2024"
 license = "MIT"
 repository = "https://github.com/MOZGIII/hyper-system-resolver"
-keywords = ["hyper", "dns", "resolver", "getaddrinfo"]
+keywords = ["hyper", "hyper-util", "dns", "resolver", "getaddrinfo"]
 
 [dependencies]
-hyper = { version = "1", features = ["client"] }
 hyper-util = { version = "0.1", features = ["client-legacy"] }
 tower-service = "0.3"
 tokio = { version = "1", features = ["rt"] }
@@ -26,6 +25,7 @@ libc = { version = "^0.2", optional = true }
 [dev-dependencies]
 tokio = { version = "1", features = ["macros"] }
 hyper-util = { version = "0.1", features = ["http1"] }
+hyper = "1"
 
 [features]
 default = ["addr-info-hints"]

@@ -1,7 +1,7 @@
-//! System DNS resolver for [`hyper`].
+//! System DNS resolver for `hyper` & [`hyper-util`].
 //!
-//! Resolves the name via `getaddrinfo`, but more flexible than [`hyper`]
-//! standard resolver.
+//! Resolves the name via `getaddrinfo`, but more flexible
+//! than [`hyper-util`]'s standard resolver.
 //!
 //! ## Usage
 //!
