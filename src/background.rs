@@ -29,7 +29,7 @@ pub trait Resolve {
     fn resolve(&mut self, name: Name) -> JoinHandle<io::Result<Self::Iter>>;
 }
 
-/// A [`hyper`]-compatible resolver implementation.
+/// A [`hyper_util`]-compatible resolver implementation.
 /// Delegates the actual resolution logic to the generic parameter `T`.
 #[derive(Clone)]
 pub struct Resolver<T> {
