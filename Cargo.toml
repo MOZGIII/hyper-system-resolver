@@ -1,6 +1,6 @@
 [package]
 name = "hyper-system-resolver"
-version = "0.6.0"
+version = "0.7.0"
 description = "An advanced system resolver for use with hyper & hyper-util."
 authors = ["MOZGIII <mike-n@narod.ru>"]
 edition = "2024"
