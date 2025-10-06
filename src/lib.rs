@@ -28,9 +28,6 @@
 #[macro_use]
 extern crate tracing;
 
-#[macro_use]
-extern crate derive_builder;
-
 #[cfg(feature = "addr-info-hints")]
 pub mod addr_info_hints;
 pub mod background;

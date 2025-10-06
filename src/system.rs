@@ -13,7 +13,8 @@ use crate::background;
 ///
 /// Uses [`dns_lookup::getaddrinfo`] in a [`tokio::task::spawn_blocking`] to
 /// perform the resolution.
-#[derive(Debug, Builder, Default, Clone)]
+#[derive(Debug, Default, Clone)]
+#[cfg_attr(feature = "builder", derive(derive_builder::Builder))]
 pub struct System {
     /// The hints to give the the system resolver when performing the
     /// resolution.
