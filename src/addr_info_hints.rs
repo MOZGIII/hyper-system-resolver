@@ -43,15 +43,17 @@ impl From<AddrFamily> for AddressFamily {
 }
 
 /// Portable [`AddrInfoHints`].
-#[derive(Debug, Builder, Default)]
+#[derive(Debug, Default)]
+#[cfg_attr(feature = "builder", derive(derive_builder::Builder))]
 pub struct AddrInfoHints {
-    #[builder(default)]
+    #[cfg_attr(feature = "builder", builder(default))]
     /// Address family to request.
     pub address_family: AddressFamily,
 }
 
 impl AddrInfoHints {
     /// Create a new [`AddrInfoHints`] builder.
+    #[cfg(feature = "builder")]
     pub fn builder() -> AddrInfoHintsBuilder {
         AddrInfoHintsBuilder::default()
     }

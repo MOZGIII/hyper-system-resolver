@@ -14,7 +14,7 @@ tower-service = "0.3"
 tokio = { version = "1", features = ["rt"] }
 tracing = "0.1"
 dns-lookup = "3"
-derive_builder = "0.20"
+derive_builder = { version = "0.20", optional = true }
 
 [target."cfg(windows)".dependencies]
 winapi = { version = "^0.3", default-features = false, features = ["ws2def"], optional = true }
@@ -28,5 +28,6 @@ hyper-util = { version = "0.1", features = ["http1"] }
 hyper = "1"
 
 [features]
-default = ["addr-info-hints"]
+default = ["addr-info-hints", "builder"]
 addr-info-hints = ["libc", "winapi"]
+builder = ["dep:derive_builder"]
