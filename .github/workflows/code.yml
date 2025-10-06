@@ -1,23 +1,18 @@
 name: code
 
 on:
-  push:
   pull_request:
-  schedule:
-    - cron:  '0 20 * * 0'
 
 defaults:
   run:
     shell: bash
 
 jobs:
-
   test:
     name: ${{ matrix.platform.name }} / ${{ matrix.mode.name }} / ${{ matrix.featureset.name }}
     runs-on: ${{ matrix.platform.os }}
     strategy:
       matrix:
-
         platform:
           - name: Ubuntu
             os: ubuntu-latest
@@ -47,7 +42,6 @@ jobs:
 
       fail-fast: false
     steps:
-
       - name: Job config
         run: printf "%s\n" "$MATRIX_CONTEXT"
         env:
