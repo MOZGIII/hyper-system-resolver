@@ -40,6 +40,8 @@ jobs:
         featureset:
           - name: default features
             args: "" # trivial
+          - name: builder only
+            args: "--no-default-features --features builder"
           - name: no default features
             args: "--no-default-features"
 
