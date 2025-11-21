@@ -48,7 +48,7 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
 
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1
